@@ -1,0 +1,34 @@
+version: '3'
+services:
+  mysql:
+    image: dev/db
+    container_name: dev_mysql
+    command: 
+      --sql_mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+      --lower_case_table_names=1
+    ports:
+      - 3306:3306
+    volumes:
+      - mysqldb:/var/lib/mysql
+    environment:
+      MYSQL_HOST: "%"
+    
+  mongo:
+    image: dev/mongo
+    container_name: dev_mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+      
+  combined-service:
+    image: combined-service:latest
+    container_name: combined-service
+    ports:
+      - 8080:8080
+      - 8081:8081
+      - 8082:8082
+      - 8083:8083      
+volumes:
+  mysqldb:
+  mongodb:
