@@ -1,0 +1,15 @@
+FROM openjdk:8-jdk
+
+RUN apt-get update
+COPY hospital-service.jar hospital-service.jar
+COPY vaccine-vendor.jar vaccine-vendor.jar
+COPY patient-service.jar patient-service.jar
+
+
+# Installing supervisor service and creating directories for copy supervisor configurations
+RUN apt-get -y install supervisor && mkdir -p /var/log/supervisor && mkdir -p /etc/supervisor/conf.d
+COPY supervisor.conf /etc/supervisor.conf
+
+EXPOSE 8080 8081 8082 8083
+
+CMD ["supervisord", "-c", "/etc/supervisor.conf"]
