@@ -1,4 +1,4 @@
-<b>Below are the steps to be followed to run multiple Springboot microservices in one container.<b>
+<b>Below are the steps to be followed to run multiple Springboot microservices in one container.</b>
 
 Step 1: Create jar files using the command mvn clean package<br />
 Step 2: Create a supervisor.conf file as present in this repo to run all the jars in one container.<br />
