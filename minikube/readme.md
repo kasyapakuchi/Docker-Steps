@@ -6,8 +6,7 @@ Minikube steps
 2. Create deployment yamls from the existing <code>docker-compose.yaml</code>. Sample <code>docker-compose.yml</code> and created <code>deployment.yaml</code> files are attached in the repo. - Run the command <code>kompose convert</code>
 
 3. Change image pull policy in the deployment.yamls as needed. In our case we made it Never as we want to use local image always and do not pull from Docker registry.
-
-<code>imagePullPolicy: Never</code>
+  <code>imagePullPolicy: Never</code>
 
 4. Install Minikube. Refer - https://minikube.sigs.k8s.io/docs/start/
 5. start the minikube with docker driver, instead of default driver. <code>minikube start --driver=docker</code>
